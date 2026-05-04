@@ -9,3 +9,38 @@ typechain-types/
 !.env.example
 *.log
 .DS_Store
+
+# 🔴 你现在要移除的自动生成文件
+typechain-types/
+artifacts/
+cache/
+
+# Node.js 依赖
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 环境变量（绝对不能提交！）
+.env
+.env.local
+.env.*.local
+
+# 测试覆盖率报告
+coverage/
+coverage.json
+
+# Hardhat 部署输出
+deployments/
+export/
+
+# IDE 配置
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
