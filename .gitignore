@@ -10,8 +10,9 @@ typechain-types/
 *.log
 .DS_Store
 
-# 🔴 你现在要移除的自动生成文件
+
 typechain-types/
+types/
 artifacts/
 cache/
 
