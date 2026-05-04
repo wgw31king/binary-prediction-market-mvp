@@ -6,13 +6,14 @@ import type { TypedContractEvent, TypedDeferredTopicFilter, TypedEventLog, Typed
   
 
   export interface PredictionMarketInterface extends Interface {
-    getFunction(nameOrSignature: "DEFAULT_ADMIN_ROLE" | "MARKET_ADMIN_ROLE" | "RESOLVER_ROLE" | "balanceOf" | "balanceOfBatch" | "buyShares" | "cancelMarket" | "claim" | "claimAll" | "collateralToken" | "createMarket" | "getRoleAdmin" | "grantRole" | "hasRole" | "isApprovedForAll" | "marketCount" | "markets" | "packTokenId" | "refundCancelled" | "renounceRole" | "resolve" | "revokeRole" | "safeBatchTransferFrom" | "safeTransferFrom" | "setApprovalForAll" | "supportsInterface" | "unpackTokenId" | "uri"): FunctionFragment;
+    getFunction(nameOrSignature: "DEFAULT_ADMIN_ROLE" | "MARKET_ADMIN_ROLE" | "PAUSER_ROLE" | "RESOLVER_KIND_MULTISIG_EIP712" | "balanceOf" | "balanceOfBatch" | "buyShares" | "cancelMarket" | "claim" | "claimAll" | "collateralToken" | "createMarket" | "eip712Domain" | "escrowImplementation" | "getRoleAdmin" | "getRoleMember" | "getRoleMemberCount" | "getRoleMembers" | "grantRole" | "hasRole" | "isApprovedForAll" | "isResolutionSigner" | "marketCount" | "marketEscrow" | "markets" | "packTokenId" | "pause" | "paused" | "refundCancelled" | "renounceRole" | "resolutionNonces" | "resolutionSignerAt" | "resolutionSignerCount" | "resolutionThreshold" | "resolveWithSignatures" | "revokeRole" | "safeBatchTransferFrom" | "safeTransferFrom" | "setApprovalForAll" | "setResolutionConfig" | "supportsInterface" | "unpackTokenId" | "unpause" | "uri"): FunctionFragment;
 
-    getEvent(nameOrSignatureOrTopic: "ApprovalForAll" | "MarketCancelled" | "MarketCreated" | "MarketResolved" | "PayoutClaimed" | "RefundClaimed" | "RoleAdminChanged" | "RoleGranted" | "RoleRevoked" | "SharesPurchased" | "TransferBatch" | "TransferSingle" | "URI"): EventFragment;
+    getEvent(nameOrSignatureOrTopic: "ApprovalForAll" | "EIP712DomainChanged" | "MarketCancelled" | "MarketCreated" | "MarketResolved" | "Paused" | "PayoutClaimed" | "RefundClaimed" | "ResolutionSignersUpdated" | "RoleAdminChanged" | "RoleGranted" | "RoleRevoked" | "SharesPurchased" | "TransferBatch" | "TransferSingle" | "URI" | "Unpaused"): EventFragment;
 
     encodeFunctionData(functionFragment: 'DEFAULT_ADMIN_ROLE', values?: undefined): string;
 encodeFunctionData(functionFragment: 'MARKET_ADMIN_ROLE', values?: undefined): string;
-encodeFunctionData(functionFragment: 'RESOLVER_ROLE', values?: undefined): string;
+encodeFunctionData(functionFragment: 'PAUSER_ROLE', values?: undefined): string;
+encodeFunctionData(functionFragment: 'RESOLVER_KIND_MULTISIG_EIP712', values?: undefined): string;
 encodeFunctionData(functionFragment: 'balanceOf', values: [AddressLike, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'balanceOfBatch', values: [AddressLike[], BigNumberish[]]): string;
 encodeFunctionData(functionFragment: 'buyShares', values: [BigNumberish, boolean, BigNumberish]): string;
@@ -21,27 +22,43 @@ encodeFunctionData(functionFragment: 'claim', values: [BigNumberish, BigNumberis
 encodeFunctionData(functionFragment: 'claimAll', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'collateralToken', values?: undefined): string;
 encodeFunctionData(functionFragment: 'createMarket', values: [string, BigNumberish]): string;
+encodeFunctionData(functionFragment: 'eip712Domain', values?: undefined): string;
+encodeFunctionData(functionFragment: 'escrowImplementation', values?: undefined): string;
 encodeFunctionData(functionFragment: 'getRoleAdmin', values: [BytesLike]): string;
+encodeFunctionData(functionFragment: 'getRoleMember', values: [BytesLike, BigNumberish]): string;
+encodeFunctionData(functionFragment: 'getRoleMemberCount', values: [BytesLike]): string;
+encodeFunctionData(functionFragment: 'getRoleMembers', values: [BytesLike]): string;
 encodeFunctionData(functionFragment: 'grantRole', values: [BytesLike, AddressLike]): string;
 encodeFunctionData(functionFragment: 'hasRole', values: [BytesLike, AddressLike]): string;
 encodeFunctionData(functionFragment: 'isApprovedForAll', values: [AddressLike, AddressLike]): string;
+encodeFunctionData(functionFragment: 'isResolutionSigner', values: [AddressLike]): string;
 encodeFunctionData(functionFragment: 'marketCount', values?: undefined): string;
+encodeFunctionData(functionFragment: 'marketEscrow', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'markets', values: [BigNumberish]): string;
 encodeFunctionData(functionFragment: 'packTokenId', values: [BigNumberish, boolean]): string;
+encodeFunctionData(functionFragment: 'pause', values?: undefined): string;
+encodeFunctionData(functionFragment: 'paused', values?: undefined): string;
 encodeFunctionData(functionFragment: 'refundCancelled', values: [BigNumberish, boolean, BigNumberish]): string;
 encodeFunctionData(functionFragment: 'renounceRole', values: [BytesLike, AddressLike]): string;
-encodeFunctionData(functionFragment: 'resolve', values: [BigNumberish, BigNumberish]): string;
+encodeFunctionData(functionFragment: 'resolutionNonces', values: [BigNumberish]): string;
+encodeFunctionData(functionFragment: 'resolutionSignerAt', values: [BigNumberish]): string;
+encodeFunctionData(functionFragment: 'resolutionSignerCount', values?: undefined): string;
+encodeFunctionData(functionFragment: 'resolutionThreshold', values?: undefined): string;
+encodeFunctionData(functionFragment: 'resolveWithSignatures', values: [BigNumberish, BigNumberish, BigNumberish, BytesLike[]]): string;
 encodeFunctionData(functionFragment: 'revokeRole', values: [BytesLike, AddressLike]): string;
 encodeFunctionData(functionFragment: 'safeBatchTransferFrom', values: [AddressLike, AddressLike, BigNumberish[], BigNumberish[], BytesLike]): string;
 encodeFunctionData(functionFragment: 'safeTransferFrom', values: [AddressLike, AddressLike, BigNumberish, BigNumberish, BytesLike]): string;
 encodeFunctionData(functionFragment: 'setApprovalForAll', values: [AddressLike, boolean]): string;
+encodeFunctionData(functionFragment: 'setResolutionConfig', values: [AddressLike[], BigNumberish]): string;
 encodeFunctionData(functionFragment: 'supportsInterface', values: [BytesLike]): string;
 encodeFunctionData(functionFragment: 'unpackTokenId', values: [BigNumberish]): string;
+encodeFunctionData(functionFragment: 'unpause', values?: undefined): string;
 encodeFunctionData(functionFragment: 'uri', values: [BigNumberish]): string;
 
     decodeFunctionResult(functionFragment: 'DEFAULT_ADMIN_ROLE', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'MARKET_ADMIN_ROLE', data: BytesLike): Result;
-decodeFunctionResult(functionFragment: 'RESOLVER_ROLE', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'PAUSER_ROLE', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'RESOLVER_KIND_MULTISIG_EIP712', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'balanceOf', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'balanceOfBatch', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'buyShares', data: BytesLike): Result;
@@ -50,22 +67,37 @@ decodeFunctionResult(functionFragment: 'claim', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'claimAll', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'collateralToken', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'createMarket', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'eip712Domain', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'escrowImplementation', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'getRoleAdmin', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'getRoleMember', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'getRoleMemberCount', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'getRoleMembers', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'grantRole', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'hasRole', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'isApprovedForAll', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'isResolutionSigner', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'marketCount', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'marketEscrow', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'markets', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'packTokenId', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'pause', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'paused', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'refundCancelled', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'renounceRole', data: BytesLike): Result;
-decodeFunctionResult(functionFragment: 'resolve', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'resolutionNonces', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'resolutionSignerAt', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'resolutionSignerCount', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'resolutionThreshold', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'resolveWithSignatures', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'revokeRole', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'safeBatchTransferFrom', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'safeTransferFrom', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'setApprovalForAll', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'setResolutionConfig', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'supportsInterface', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'unpackTokenId', data: BytesLike): Result;
+decodeFunctionResult(functionFragment: 'unpause', data: BytesLike): Result;
 decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
   }
 
@@ -74,6 +106,18 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
       export type InputTuple = [account: AddressLike, operator: AddressLike, approved: boolean];
       export type OutputTuple = [account: string, operator: string, approved: boolean];
       export interface OutputObject {account: string, operator: string, approved: boolean };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace EIP712DomainChangedEvent {
+      export type InputTuple = [];
+      export type OutputTuple = [];
+      export interface OutputObject {};
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -95,9 +139,9 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
   
 
     export namespace MarketCreatedEvent {
-      export type InputTuple = [marketId: BigNumberish, metadataURI: string, endTime: BigNumberish];
-      export type OutputTuple = [marketId: bigint, metadataURI: string, endTime: bigint];
-      export interface OutputObject {marketId: bigint, metadataURI: string, endTime: bigint };
+      export type InputTuple = [marketId: BigNumberish, metadataURI: string, endTime: BigNumberish, escrow: AddressLike];
+      export type OutputTuple = [marketId: bigint, metadataURI: string, endTime: bigint, escrow: string];
+      export interface OutputObject {marketId: bigint, metadataURI: string, endTime: bigint, escrow: string };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -107,9 +151,21 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
   
 
     export namespace MarketResolvedEvent {
-      export type InputTuple = [marketId: BigNumberish, outcome: BigNumberish];
-      export type OutputTuple = [marketId: bigint, outcome: bigint];
-      export interface OutputObject {marketId: bigint, outcome: bigint };
+      export type InputTuple = [marketId: BigNumberish, outcome: BigNumberish, resolverKind: BigNumberish, resolutionNonce: BigNumberish, signatureDeadline: BigNumberish];
+      export type OutputTuple = [marketId: bigint, outcome: bigint, resolverKind: bigint, resolutionNonce: bigint, signatureDeadline: bigint];
+      export interface OutputObject {marketId: bigint, outcome: bigint, resolverKind: bigint, resolutionNonce: bigint, signatureDeadline: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace PausedEvent {
+      export type InputTuple = [account: AddressLike];
+      export type OutputTuple = [account: string];
+      export interface OutputObject {account: string };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -134,6 +190,18 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
       export type InputTuple = [marketId: BigNumberish, claimant: AddressLike, isYes: boolean, amount: BigNumberish];
       export type OutputTuple = [marketId: bigint, claimant: string, isYes: boolean, amount: bigint];
       export interface OutputObject {marketId: bigint, claimant: string, isYes: boolean, amount: bigint };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
+    export namespace ResolutionSignersUpdatedEvent {
+      export type InputTuple = [threshold: BigNumberish, signerCount: BigNumberish];
+      export type OutputTuple = [threshold: bigint, signerCount: bigint];
+      export interface OutputObject {threshold: bigint, signerCount: bigint };
       export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
       export type Filter = TypedDeferredTopicFilter<Event>
       export type Log = TypedEventLog<Event>
@@ -226,6 +294,18 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
 
   
 
+    export namespace UnpausedEvent {
+      export type InputTuple = [account: AddressLike];
+      export type OutputTuple = [account: string];
+      export interface OutputObject {account: string };
+      export type Event = TypedContractEvent<InputTuple, OutputTuple, OutputObject>
+      export type Filter = TypedDeferredTopicFilter<Event>
+      export type Log = TypedEventLog<Event>
+      export type LogDescription = TypedLogDescription<Event>
+    }
+
+  
+
   export interface PredictionMarket extends BaseContract {
     
     connect(runner?: ContractRunner | null): PredictionMarket;
@@ -276,9 +356,17 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
-    RESOLVER_ROLE: TypedContractMethod<
+    PAUSER_ROLE: TypedContractMethod<
       [],
       [string],
+      'view'
+    >
+    
+
+    
+    RESOLVER_KIND_MULTISIG_EIP712: TypedContractMethod<
+      [],
+      [bigint],
       'view'
     >
     
@@ -348,9 +436,49 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
+    eip712Domain: TypedContractMethod<
+      [],
+      [[string, string, string, bigint, string, string, bigint[]] & {fields: string, name: string, version: string, chainId: bigint, verifyingContract: string, salt: string, extensions: bigint[] }],
+      'view'
+    >
+    
+
+    
+    escrowImplementation: TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >
+    
+
+    
     getRoleAdmin: TypedContractMethod<
       [role: BytesLike, ],
       [string],
+      'view'
+    >
+    
+
+    
+    getRoleMember: TypedContractMethod<
+      [role: BytesLike, index: BigNumberish, ],
+      [string],
+      'view'
+    >
+    
+
+    
+    getRoleMemberCount: TypedContractMethod<
+      [role: BytesLike, ],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    getRoleMembers: TypedContractMethod<
+      [role: BytesLike, ],
+      [string[]],
       'view'
     >
     
@@ -380,9 +508,25 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
+    isResolutionSigner: TypedContractMethod<
+      [account: AddressLike, ],
+      [boolean],
+      'view'
+    >
+    
+
+    
     marketCount: TypedContractMethod<
       [],
       [bigint],
+      'view'
+    >
+    
+
+    
+    marketEscrow: TypedContractMethod<
+      [marketId: BigNumberish, ],
+      [string],
       'view'
     >
     
@@ -404,6 +548,22 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
+    pause: TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
+    paused: TypedContractMethod<
+      [],
+      [boolean],
+      'view'
+    >
+    
+
+    
     refundCancelled: TypedContractMethod<
       [marketId: BigNumberish, isYes: boolean, amount: BigNumberish, ],
       [void],
@@ -420,8 +580,40 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
-    resolve: TypedContractMethod<
-      [marketId: BigNumberish, outcome: BigNumberish, ],
+    resolutionNonces: TypedContractMethod<
+      [marketId: BigNumberish, ],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    resolutionSignerAt: TypedContractMethod<
+      [index: BigNumberish, ],
+      [string],
+      'view'
+    >
+    
+
+    
+    resolutionSignerCount: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    resolutionThreshold: TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >
+    
+
+    
+    resolveWithSignatures: TypedContractMethod<
+      [marketId: BigNumberish, outcome: BigNumberish, deadline: BigNumberish, signatures: BytesLike[], ],
       [void],
       'nonpayable'
     >
@@ -460,6 +652,14 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
     
 
     
+    setResolutionConfig: TypedContractMethod<
+      [signers: AddressLike[], threshold: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >
+    
+
+    
     supportsInterface: TypedContractMethod<
       [interfaceId: BytesLike, ],
       [boolean],
@@ -472,6 +672,14 @@ decodeFunctionResult(functionFragment: 'uri', data: BytesLike): Result;
       [tokenId: BigNumberish, ],
       [[bigint, boolean] & {marketId: bigint, isYes: boolean }],
       'view'
+    >
+    
+
+    
+    unpause: TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
     >
     
 
@@ -496,9 +704,14 @@ getFunction(nameOrSignature: 'MARKET_ADMIN_ROLE'): TypedContractMethod<
       [string],
       'view'
     >;
-getFunction(nameOrSignature: 'RESOLVER_ROLE'): TypedContractMethod<
+getFunction(nameOrSignature: 'PAUSER_ROLE'): TypedContractMethod<
       [],
       [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'RESOLVER_KIND_MULTISIG_EIP712'): TypedContractMethod<
+      [],
+      [bigint],
       'view'
     >;
 getFunction(nameOrSignature: 'balanceOf'): TypedContractMethod<
@@ -541,9 +754,34 @@ getFunction(nameOrSignature: 'createMarket'): TypedContractMethod<
       [bigint],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'eip712Domain'): TypedContractMethod<
+      [],
+      [[string, string, string, bigint, string, string, bigint[]] & {fields: string, name: string, version: string, chainId: bigint, verifyingContract: string, salt: string, extensions: bigint[] }],
+      'view'
+    >;
+getFunction(nameOrSignature: 'escrowImplementation'): TypedContractMethod<
+      [],
+      [string],
+      'view'
+    >;
 getFunction(nameOrSignature: 'getRoleAdmin'): TypedContractMethod<
       [role: BytesLike, ],
       [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'getRoleMember'): TypedContractMethod<
+      [role: BytesLike, index: BigNumberish, ],
+      [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'getRoleMemberCount'): TypedContractMethod<
+      [role: BytesLike, ],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'getRoleMembers'): TypedContractMethod<
+      [role: BytesLike, ],
+      [string[]],
       'view'
     >;
 getFunction(nameOrSignature: 'grantRole'): TypedContractMethod<
@@ -561,9 +799,19 @@ getFunction(nameOrSignature: 'isApprovedForAll'): TypedContractMethod<
       [boolean],
       'view'
     >;
+getFunction(nameOrSignature: 'isResolutionSigner'): TypedContractMethod<
+      [account: AddressLike, ],
+      [boolean],
+      'view'
+    >;
 getFunction(nameOrSignature: 'marketCount'): TypedContractMethod<
       [],
       [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'marketEscrow'): TypedContractMethod<
+      [marketId: BigNumberish, ],
+      [string],
       'view'
     >;
 getFunction(nameOrSignature: 'markets'): TypedContractMethod<
@@ -576,6 +824,16 @@ getFunction(nameOrSignature: 'packTokenId'): TypedContractMethod<
       [bigint],
       'view'
     >;
+getFunction(nameOrSignature: 'pause'): TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
+    >;
+getFunction(nameOrSignature: 'paused'): TypedContractMethod<
+      [],
+      [boolean],
+      'view'
+    >;
 getFunction(nameOrSignature: 'refundCancelled'): TypedContractMethod<
       [marketId: BigNumberish, isYes: boolean, amount: BigNumberish, ],
       [void],
@@ -586,8 +844,28 @@ getFunction(nameOrSignature: 'renounceRole'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
-getFunction(nameOrSignature: 'resolve'): TypedContractMethod<
-      [marketId: BigNumberish, outcome: BigNumberish, ],
+getFunction(nameOrSignature: 'resolutionNonces'): TypedContractMethod<
+      [marketId: BigNumberish, ],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'resolutionSignerAt'): TypedContractMethod<
+      [index: BigNumberish, ],
+      [string],
+      'view'
+    >;
+getFunction(nameOrSignature: 'resolutionSignerCount'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'resolutionThreshold'): TypedContractMethod<
+      [],
+      [bigint],
+      'view'
+    >;
+getFunction(nameOrSignature: 'resolveWithSignatures'): TypedContractMethod<
+      [marketId: BigNumberish, outcome: BigNumberish, deadline: BigNumberish, signatures: BytesLike[], ],
       [void],
       'nonpayable'
     >;
@@ -611,6 +889,11 @@ getFunction(nameOrSignature: 'setApprovalForAll'): TypedContractMethod<
       [void],
       'nonpayable'
     >;
+getFunction(nameOrSignature: 'setResolutionConfig'): TypedContractMethod<
+      [signers: AddressLike[], threshold: BigNumberish, ],
+      [void],
+      'nonpayable'
+    >;
 getFunction(nameOrSignature: 'supportsInterface'): TypedContractMethod<
       [interfaceId: BytesLike, ],
       [boolean],
@@ -621,6 +904,11 @@ getFunction(nameOrSignature: 'unpackTokenId'): TypedContractMethod<
       [[bigint, boolean] & {marketId: bigint, isYes: boolean }],
       'view'
     >;
+getFunction(nameOrSignature: 'unpause'): TypedContractMethod<
+      [],
+      [void],
+      'nonpayable'
+    >;
 getFunction(nameOrSignature: 'uri'): TypedContractMethod<
       [arg0: BigNumberish, ],
       [string],
@@ -628,11 +916,14 @@ getFunction(nameOrSignature: 'uri'): TypedContractMethod<
     >;
 
     getEvent(key: 'ApprovalForAll'): TypedContractEvent<ApprovalForAllEvent.InputTuple, ApprovalForAllEvent.OutputTuple, ApprovalForAllEvent.OutputObject>;
+getEvent(key: 'EIP712DomainChanged'): TypedContractEvent<EIP712DomainChangedEvent.InputTuple, EIP712DomainChangedEvent.OutputTuple, EIP712DomainChangedEvent.OutputObject>;
 getEvent(key: 'MarketCancelled'): TypedContractEvent<MarketCancelledEvent.InputTuple, MarketCancelledEvent.OutputTuple, MarketCancelledEvent.OutputObject>;
 getEvent(key: 'MarketCreated'): TypedContractEvent<MarketCreatedEvent.InputTuple, MarketCreatedEvent.OutputTuple, MarketCreatedEvent.OutputObject>;
 getEvent(key: 'MarketResolved'): TypedContractEvent<MarketResolvedEvent.InputTuple, MarketResolvedEvent.OutputTuple, MarketResolvedEvent.OutputObject>;
+getEvent(key: 'Paused'): TypedContractEvent<PausedEvent.InputTuple, PausedEvent.OutputTuple, PausedEvent.OutputObject>;
 getEvent(key: 'PayoutClaimed'): TypedContractEvent<PayoutClaimedEvent.InputTuple, PayoutClaimedEvent.OutputTuple, PayoutClaimedEvent.OutputObject>;
 getEvent(key: 'RefundClaimed'): TypedContractEvent<RefundClaimedEvent.InputTuple, RefundClaimedEvent.OutputTuple, RefundClaimedEvent.OutputObject>;
+getEvent(key: 'ResolutionSignersUpdated'): TypedContractEvent<ResolutionSignersUpdatedEvent.InputTuple, ResolutionSignersUpdatedEvent.OutputTuple, ResolutionSignersUpdatedEvent.OutputObject>;
 getEvent(key: 'RoleAdminChanged'): TypedContractEvent<RoleAdminChangedEvent.InputTuple, RoleAdminChangedEvent.OutputTuple, RoleAdminChangedEvent.OutputObject>;
 getEvent(key: 'RoleGranted'): TypedContractEvent<RoleGrantedEvent.InputTuple, RoleGrantedEvent.OutputTuple, RoleGrantedEvent.OutputObject>;
 getEvent(key: 'RoleRevoked'): TypedContractEvent<RoleRevokedEvent.InputTuple, RoleRevokedEvent.OutputTuple, RoleRevokedEvent.OutputObject>;
@@ -640,6 +931,7 @@ getEvent(key: 'SharesPurchased'): TypedContractEvent<SharesPurchasedEvent.InputT
 getEvent(key: 'TransferBatch'): TypedContractEvent<TransferBatchEvent.InputTuple, TransferBatchEvent.OutputTuple, TransferBatchEvent.OutputObject>;
 getEvent(key: 'TransferSingle'): TypedContractEvent<TransferSingleEvent.InputTuple, TransferSingleEvent.OutputTuple, TransferSingleEvent.OutputObject>;
 getEvent(key: 'URI'): TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTuple, URIEvent.OutputObject>;
+getEvent(key: 'Unpaused'): TypedContractEvent<UnpausedEvent.InputTuple, UnpausedEvent.OutputTuple, UnpausedEvent.OutputObject>;
 
     filters: {
       
@@ -647,16 +939,24 @@ getEvent(key: 'URI'): TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTup
       ApprovalForAll: TypedContractEvent<ApprovalForAllEvent.InputTuple, ApprovalForAllEvent.OutputTuple, ApprovalForAllEvent.OutputObject>;
     
 
+      'EIP712DomainChanged()': TypedContractEvent<EIP712DomainChangedEvent.InputTuple, EIP712DomainChangedEvent.OutputTuple, EIP712DomainChangedEvent.OutputObject>;
+      EIP712DomainChanged: TypedContractEvent<EIP712DomainChangedEvent.InputTuple, EIP712DomainChangedEvent.OutputTuple, EIP712DomainChangedEvent.OutputObject>;
+    
+
       'MarketCancelled(uint256)': TypedContractEvent<MarketCancelledEvent.InputTuple, MarketCancelledEvent.OutputTuple, MarketCancelledEvent.OutputObject>;
       MarketCancelled: TypedContractEvent<MarketCancelledEvent.InputTuple, MarketCancelledEvent.OutputTuple, MarketCancelledEvent.OutputObject>;
     
 
-      'MarketCreated(uint256,string,uint64)': TypedContractEvent<MarketCreatedEvent.InputTuple, MarketCreatedEvent.OutputTuple, MarketCreatedEvent.OutputObject>;
+      'MarketCreated(uint256,string,uint64,address)': TypedContractEvent<MarketCreatedEvent.InputTuple, MarketCreatedEvent.OutputTuple, MarketCreatedEvent.OutputObject>;
       MarketCreated: TypedContractEvent<MarketCreatedEvent.InputTuple, MarketCreatedEvent.OutputTuple, MarketCreatedEvent.OutputObject>;
     
 
-      'MarketResolved(uint256,uint8)': TypedContractEvent<MarketResolvedEvent.InputTuple, MarketResolvedEvent.OutputTuple, MarketResolvedEvent.OutputObject>;
+      'MarketResolved(uint256,uint8,uint8,uint256,uint256)': TypedContractEvent<MarketResolvedEvent.InputTuple, MarketResolvedEvent.OutputTuple, MarketResolvedEvent.OutputObject>;
       MarketResolved: TypedContractEvent<MarketResolvedEvent.InputTuple, MarketResolvedEvent.OutputTuple, MarketResolvedEvent.OutputObject>;
+    
+
+      'Paused(address)': TypedContractEvent<PausedEvent.InputTuple, PausedEvent.OutputTuple, PausedEvent.OutputObject>;
+      Paused: TypedContractEvent<PausedEvent.InputTuple, PausedEvent.OutputTuple, PausedEvent.OutputObject>;
     
 
       'PayoutClaimed(uint256,address,uint256,uint256)': TypedContractEvent<PayoutClaimedEvent.InputTuple, PayoutClaimedEvent.OutputTuple, PayoutClaimedEvent.OutputObject>;
@@ -665,6 +965,10 @@ getEvent(key: 'URI'): TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTup
 
       'RefundClaimed(uint256,address,bool,uint256)': TypedContractEvent<RefundClaimedEvent.InputTuple, RefundClaimedEvent.OutputTuple, RefundClaimedEvent.OutputObject>;
       RefundClaimed: TypedContractEvent<RefundClaimedEvent.InputTuple, RefundClaimedEvent.OutputTuple, RefundClaimedEvent.OutputObject>;
+    
+
+      'ResolutionSignersUpdated(uint256,uint256)': TypedContractEvent<ResolutionSignersUpdatedEvent.InputTuple, ResolutionSignersUpdatedEvent.OutputTuple, ResolutionSignersUpdatedEvent.OutputObject>;
+      ResolutionSignersUpdated: TypedContractEvent<ResolutionSignersUpdatedEvent.InputTuple, ResolutionSignersUpdatedEvent.OutputTuple, ResolutionSignersUpdatedEvent.OutputObject>;
     
 
       'RoleAdminChanged(bytes32,bytes32,bytes32)': TypedContractEvent<RoleAdminChangedEvent.InputTuple, RoleAdminChangedEvent.OutputTuple, RoleAdminChangedEvent.OutputObject>;
@@ -693,6 +997,10 @@ getEvent(key: 'URI'): TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTup
 
       'URI(string,uint256)': TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTuple, URIEvent.OutputObject>;
       URI: TypedContractEvent<URIEvent.InputTuple, URIEvent.OutputTuple, URIEvent.OutputObject>;
+    
+
+      'Unpaused(address)': TypedContractEvent<UnpausedEvent.InputTuple, UnpausedEvent.OutputTuple, UnpausedEvent.OutputObject>;
+      Unpaused: TypedContractEvent<UnpausedEvent.InputTuple, UnpausedEvent.OutputTuple, UnpausedEvent.OutputObject>;
     
     };
   }

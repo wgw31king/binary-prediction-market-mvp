@@ -10,25 +10,33 @@ import * as Contracts from "./index.js";
 
 declare module "@nomicfoundation/hardhat-ethers/types" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
-  getContractFactory(name: 'PredictionMarket', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.PredictionMarket__factory>
+  getContractFactory(name: 'CollateralEscrow', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.CollateralEscrow__factory>
+getContractFactory(name: 'PredictionMarket', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.PredictionMarket__factory>
+getContractFactory(name: 'TimelockControllerImport', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.TimelockControllerImport__factory>
 getContractFactory(name: 'MockERC20', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.MockERC20__factory>
 getContractFactory(name: 'IReentrantHook', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.IReentrantHook__factory>
 getContractFactory(name: 'MockERC20Reentrant', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.MockERC20Reentrant__factory>
 getContractFactory(name: 'ReentrancyBuyer', signerOrOptions?: ethers.Signer | FactoryOptions): Promise<Contracts.ReentrancyBuyer__factory>
 
-  getContractAt(name: 'PredictionMarket', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.PredictionMarket>
+  getContractAt(name: 'CollateralEscrow', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.CollateralEscrow>
+getContractAt(name: 'PredictionMarket', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.PredictionMarket>
+getContractAt(name: 'TimelockControllerImport', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.TimelockControllerImport>
 getContractAt(name: 'MockERC20', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.MockERC20>
 getContractAt(name: 'IReentrantHook', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.IReentrantHook>
 getContractAt(name: 'MockERC20Reentrant', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.MockERC20Reentrant>
 getContractAt(name: 'ReentrancyBuyer', address: string | ethers.Addressable, signer?: ethers.Signer): Promise<Contracts.ReentrancyBuyer>
 
-  deployContract(name: 'PredictionMarket', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PredictionMarket>
+  deployContract(name: 'CollateralEscrow', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.CollateralEscrow>
+deployContract(name: 'PredictionMarket', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PredictionMarket>
+deployContract(name: 'TimelockControllerImport', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.TimelockControllerImport>
 deployContract(name: 'MockERC20', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.MockERC20>
 deployContract(name: 'IReentrantHook', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IReentrantHook>
 deployContract(name: 'MockERC20Reentrant', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.MockERC20Reentrant>
 deployContract(name: 'ReentrancyBuyer', signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.ReentrancyBuyer>
 
-  deployContract(name: 'PredictionMarket', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PredictionMarket>
+  deployContract(name: 'CollateralEscrow', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.CollateralEscrow>
+deployContract(name: 'PredictionMarket', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.PredictionMarket>
+deployContract(name: 'TimelockControllerImport', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.TimelockControllerImport>
 deployContract(name: 'MockERC20', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.MockERC20>
 deployContract(name: 'IReentrantHook', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.IReentrantHook>
 deployContract(name: 'MockERC20Reentrant', args: any[], signerOrOptions?: ethers.Signer | DeployContractOptions): Promise<Contracts.MockERC20Reentrant>
